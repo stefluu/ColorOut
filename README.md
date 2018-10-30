@@ -24,6 +24,10 @@ Functionality and MVP Features
 
 * Level counter increments upon level completion
 
+Wireframe:
+
+![](https://github.com/stefluu/ColorOut/blob/master/ColorOut%20Wireframe.png)
+
 Architecture and Technologies
 
 * Vanilla Javascript - for logic
