@@ -10,6 +10,15 @@ function Cell(row, col, grid) {
 
     // [1, 2, 3, 4].forEach(() => this.walls.push(new Wall()));
 
+    this.highlight = function(){
+        console.log(this.row, this.col);
+        const startRow = this.row * 40;
+        const startCol = this.col * 40;
+        noStroke();
+        fill("purple");
+        rect(startRow, startCol, 40, 40)
+    }
+
     this.render = function () {
         const startRow = this.row * 40;
         const startCol = this.col * 40;
@@ -18,15 +27,22 @@ function Cell(row, col, grid) {
         // rect(startX, startY, 40, 40)
         // noFill();
         for (let i = 0; i < this.walls.length; i++) {
-            this.walls[i].render(i, startRow, startCol);
+            if(this.walls[i].present){
+                this.walls[i].render(i, startRow, startCol);
+            }else {
+                this.walls[i].derender(i, startRow, startCol);
+            }
         }
-
+        
+        
         if (this.visited) {
-            rect(startRow, startCol, 40, 40)
+            noStroke();
+            rect(startRow+1, startCol+1, 30, 30)
             fill("green");
         }
-
+        
     }
+
 
     this.getNeighbor = function () {
 
@@ -36,27 +52,58 @@ function Cell(row, col, grid) {
         //     [row, col - 1],
         //     [row, col + 1]            
         // ]
-        console.log(row)
-        console.log(col)
-        console.log(grid)
+        // console.log(row)
+        // console.log(col)
+        // console.log(grid)
 
-        const neighbors = [
-            grid[row - 1][col],
-            grid[row + 1][col],
-            grid[row][col - 1],
-            grid[row][col + 1]
-        ]
+        const top = grid[row - 1];
+        const right = grid[row + 1];
+        const bottom = grid[row];
+        const left = grid[row];
+
+        const neighbors = []
+
+        if(top){
+            neighbors.push(grid[row - 1][col]);
+        }
+
+        if(right){
+            neighbors.push(grid[row + 1][col]);
+        }
+
+        if (bottom) {
+            neighbors.push(grid[row][col - 1]);
+        }
+
+        if (left) {
+            neighbors.push(grid[row][col + 1]);
+        }
+
+
+        // const neighbors = [
+        //     grid[row - 1][col],
+        //     grid[row + 1][col],
+        //     grid[row][col - 1],
+        //     grid[row][col + 1]
+        // ]
+        //  const neighborsIndices = [
+        //     [row - 1, col],
+        //     [row + 1, col],
+        //     [row, col - 1],
+        //     [row, col + 1]            
+        // ]
 
         // const neighbors = [];
-
-        // const validateIdx = function (idxArr) {
-        //     if(idxArr.every((idx) => {
-        //         return idx < 20 && idx >= 0}
-        //         )){
-
-        //         neighbors.push(idxArr);
+        
+        // const validateIdx = function (idx) {
+        //     idx >= 0 && idx < 20
+        // }
+        // for(let i = 0; i < neighborsIndices.length; i++){
+        //     if(validateIdx(neighborsIndices[i][0]) && validateIdx(neighborsIndices[i][1])){
+        //         neighbors.push(grid[neighborsIndices[i][0]][neighborsIndices[i][1]])
         //     }
         // }
+
 
         // let top = [(row - 1), col];
         // validateIdx(top);
@@ -66,8 +113,8 @@ function Cell(row, col, grid) {
         // validateIdx(bottom);
         // let left = [row, (col - 1)];
         // validateIdx(left);
-
-        console.log(neighbors)
+        // console.log("neighbors")
+        // console.log(neighbors)
 
         const validNeighbors = [];
 
@@ -110,21 +157,39 @@ function Cell(row, col, grid) {
 
         // const validNeighbors = neighbors.filter(validateNeighbors);
 
-        for (let i = 0; i < neighbors.length; i++) {
+        // for (let i = 0; i < neighbors.length; i++) {
+        //     if (neighbors[i] && !(neighbors[i].visited)) {
+        //         if(neighbors[i].row < 20 && neighbors[i].row >=0){
+        //             if(neighbors[i].col < 20 && neighbors[i].col >= 0){
+
+        //                 validNeighbors.push(neighbors[i])
+        //             }
+        //         }
+        //     }
+        // }
+
+          for (let i = 0; i < neighbors.length; i++) {
             if (neighbors[i] && !(neighbors[i].visited)) {
-                validNeighbors.push(neighbors[i])
+                // if(neighbors[i].row < 20 && neighbors[i].row >=0){
+                //     if(neighbors[i].col < 20 && neighbors[i].col >= 0){
+
+                        validNeighbors.push(neighbors[i])
+                    // }
+                // }
             }
         }
 
 
-        console.log("valid")
-        console.log(validNeighbors)
+        // console.log("valid")
+        // console.log(validNeighbors)
 
         let nextCell;
 
         if (validNeighbors.length > 0) {
             nextCell = this.chooseRandomNeighbor(validNeighbors);
             return nextCell;
+        } else{
+            return undefined;
         }
         // let nextCell = 
 

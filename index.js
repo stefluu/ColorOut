@@ -20,36 +20,73 @@ function setup() {
   let current_col = Math.floor(Math.random() * 20);
 
   current = grid[current_row][current_col];
-
+//   console.log("current")
+//   console.log(current)
+  
   frameRate(5);
-
+  
 }
 
 function draw() {
     background(51)
-
-    for(let i = 0; i < grid.length; i++){
-        for(let j = 0; j < grid[i].length; j++){
-            grid[i][j].render();
-        }
-    }
-
+    
     current.visited = true;
+    current.highlight()
 
 
     // let nextCell = current.getNextCell(current.row, current.col);
     let nextCell = current.getNeighbor();
 
-    console.log("nextcell")
-    console.log(nextCell);
-
+    // console.log("nextcell")
+    // console.log(nextCell);
     
+    this.removeWalls = function(current, next){
+        const changeX = current.row - next.row;
+        const changeY = current.col - next.col;
+        
+        // current.walls.forEach(wall => wall.present = false)
+        
 
+        switch(changeX){
+            case 1:
+                current.walls[0].present = false;  
+                next.walls[2].present = false;
+                break;
+            case -1:
+                current.walls[2].present = false;
+                next.walls[0].present = false;
+                break;
+        }
+
+        switch (changeY) {
+            case 1:
+                current.walls[3].present = false;
+                next.walls[1].present = false;
+                break;
+            case -1:
+                current.walls[1].present = false;
+                next.walls[3].present = false;
+                break;
+        }
+    } 
+    
     if(nextCell){
         nextCell.visited = true;
+        this.removeWalls(current, nextCell);
         current = nextCell;
-
+        console.log(current);
+    } else {
+        noLoop();
     }
+
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[i].length; j++) {
+            grid[i][j].render();
+        }
+    }
+    current.highlight();
+
+
 }
 
 // function Cell(row, col) {
