@@ -52,7 +52,7 @@ function draw() {
     // console.log("nextcell")
     // console.log(nextCell);
     
-    this.removeWalls = function(current, next){
+    this.removeWalls = function(current, next, grid){
         const changeX = current.row - next.row;
         const changeY = current.col - next.col;
         
@@ -80,15 +80,38 @@ function draw() {
                 next.walls[3].present = false;
                 break;
         }
+
+        // const firstRow = grid[0];
+        // const lastRow = grid[19];
+
+        // for (let i = 0; i < firstRow.length; i++) {
+        //     firstRow[i].walls[3].present = true
+        // }
+
+        // for (let i = 0; i < lastRow.length; i++) {
+        //     lastRow[i].walls[1].present = true
+        // }
+
+        // const firstCol = grid.filter((cell) => {
+        //     return cell.col === 0
+        // })
+
+        // const lastCol = grid.filter((cell) => {
+        //     return cell.col === 19
+        // })
+
+        // for (let i = 0; i < firstCol.length; i++) {
+        //     firstCol[i].walls[2].present = true;
+        // }
+
+        // for (let i = 0; i < lastCol.length; i++) {
+        //     lastCol[i].walls[0].present = true;
+        // }
     } 
-    
-    // let allVisited = grid.every((cell)=>{
-    //     return cell.visited
-    // })
 
     if(nextCell){
         nextCell.visited = true;
-        this.removeWalls(current, nextCell);
+        this.removeWalls(current, nextCell, grid);
         current = nextCell;
         // console.log("stack")
         // console.log(stack);

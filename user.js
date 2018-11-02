@@ -5,7 +5,7 @@ function User(){
 
     
     this.render = function(x, y) {
-        const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+        const colors = ["red", "orange", "green", "blue", "purple"];
         let currentColor = colors[Math.floor(Math.random() * colors.length)];
         
         fill(currentColor);

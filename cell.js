@@ -26,10 +26,11 @@ function Cell(row, col, grid) {
         // x, y, width, height
         // rect(startX, startY, 40, 40)
         // noFill();
+        
         for (let i = 0; i < this.walls.length; i++) {
             if(this.walls[i].present){
                 this.walls[i].render(i, startRow, startCol);
-            }else {
+            } else {
                 this.walls[i].derender(i, startRow, startCol);
             }
         }
@@ -37,9 +38,10 @@ function Cell(row, col, grid) {
         
         if (this.visited) {
             noStroke();
-            fill("green");
-            rect(startRow+1, startCol+1, 40, 40)
+            fill("white");
+            rect(startRow+1, startCol+1, 38, 38)
         }
+
         
     }
 

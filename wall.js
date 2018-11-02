@@ -4,7 +4,8 @@ class Wall {
   }
 
   render(wallPos, x, y) {
-    stroke(255);
+    stroke("black");
+    strokeWeight(3);
     switch (wallPos) {
       case 0:
         line(x, y, x, y + 40);
@@ -15,10 +16,11 @@ class Wall {
       case 3:
         line(x + 40, y, x, y);
     }
+
   }
 
   derender(wallPos, x, y) {
-    stroke("green");
+    stroke("white");
     switch (wallPos) {
       case 0:
         line(x, y, x, y + 40);
