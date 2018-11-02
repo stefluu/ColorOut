@@ -37,8 +37,8 @@ function Cell(row, col, grid) {
         
         if (this.visited) {
             noStroke();
-            rect(startRow+1, startCol+1, 40, 40)
             fill("green");
+            rect(startRow+1, startCol+1, 40, 40)
         }
         
     }

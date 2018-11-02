@@ -1,10 +1,16 @@
 const Cell = require('./cell');
+const MovingObject = require('./moving_objects');
+const User = require('./user');
+
+window.MovingObject = MovingObject;
 
 const grid = [];
 
 let current;
 
 const stack = [];
+
+const user = new User();
 
 function setup() {
   createCanvas(800, 800);
@@ -26,13 +32,12 @@ function setup() {
   //   console.log("current")
 //   console.log(current)
   
-  frameRate(30);
+  frameRate(50);
   
 }
 
 function draw() {
     background(51)
-
     
     if (current) {
         current.visited = true;
@@ -111,7 +116,7 @@ function draw() {
         }
     }
     // current.highlight();
-
+    user.render();
 
 }
 
