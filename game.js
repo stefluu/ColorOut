@@ -1,4 +1,52 @@
-// function Game(){
+const User = require('./user');
+
+function Game(){
+    this.user = new User();
+    this.end = [19, 19];
+    // this.userPos = [0, 0];
+
+    this.userRender = function(){
+        this.user.render(this.user.pos[0], this.user.pos[1]);
+    }
+
+    this.play = function(){
+        this.userMove();
+    }
+
+    this.end = function(userPos){
+        this.user.pos === this.end
+    }
+
+    this.userMove = function(){
+        if (keyIsDown(LEFT_ARROW)) {
+            this.user.updatePos([y, -40]);
+            this.user.render();
+        }
+    
+        if (keyIsDown(RIGHT_ARROW)) {
+            this.user.updatePos([y, 40]);
+            this.user.render();
+        }
+    
+        if (keyIsDown(UP_ARROW)) {
+            this.user.updatePos([x, -40]);
+            this.user.render();
+        }
+    
+        if (keyIsDown(DOWN_ARROW)) {
+            this.user.updatePos([x, 40]);
+            this.user.render();
+        }
+        
+        const colors = ["lightcoral", "orange", "Chartreuse", "darkcyan", "darkorchid"];
+        let currentColor = colors[Math.floor(Math.random() * colors.length)];
+        fill(currentColor);
+        ellipse(19, 19, 15, 15);
+    }
+
+}
+
+module.exports = Game;
 //     this.xDimen = 900;
 //     this.yDimen = 900;
 //     this.cells = [];
@@ -27,5 +75,3 @@
 //     for(let i = 0; i < this.cells.length; i++){
         
 //     }
-
-// }
