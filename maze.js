@@ -1,16 +1,19 @@
-class Maze{
-    constructor(current){
-        this.current = current;
-    }
+function Maze(current, grid){
+    
+    this.current = current;
+    this.grid = grid;
+    this.stack = [];
+    this.map = false;
 
-    draw(){
+    this.draw = function(){
+
         background(51)
 
         // if (!map && !gameEnd) {
             if (this.current) {
                 this.current.visited = true;
                 // this.current.highlight();
-                stack.push(this.current);
+                this.stack.push(this.current);
             }
 
 
@@ -20,31 +23,31 @@ class Maze{
             // console.log("nextcell")
             // console.log(nextCell);
 
-            removeWalls = function (this.current, next, grid) {
-                const changeX = this.current.row - next.row;
-                const changeY = this.current.col - next.col;
+            removeWalls = function (current, next, grid) {
+                const changeX = current.row - next.row;
+                const changeY = current.col - next.col;
 
-                // this.current.walls.forEach(wall => wall.present = false)
+                // current.walls.forEach(wall => wall.present = false)
 
 
                 switch (changeX) {
                     case 1:
-                        this.current.walls[0].present = false;
+                        current.walls[0].present = false;
                         next.walls[2].present = false;
                         break;
                     case -1:
-                        this.current.walls[2].present = false;
+                        current.walls[2].present = false;
                         next.walls[0].present = false;
                         break;
                 }
 
                 switch (changeY) {
                     case 1:
-                        this.current.walls[3].present = false;
+                        current.walls[3].present = false;
                         next.walls[1].present = false;
                         break;
                     case -1:
-                        this.current.walls[1].present = false;
+                        current.walls[1].present = false;
                         next.walls[3].present = false;
                         break;
                 }
@@ -79,24 +82,24 @@ class Maze{
 
             if (nextCell) {
                 nextCell.visited = true;
-                this.removeWalls(this.current, nextCell, grid);
+                removeWalls(this.current, nextCell, grid);
                 this.current = nextCell;
-                // console.log("stack")
-                // console.log(stack);
-            } else if (stack.length > 0) {
-                potentialRestart = stack.pop()
+                // console.log("this.stack")
+                // console.log(this.stack);
+            } else if (this.stack.length > 0) {
+                potentialRestart = this.stack.pop()
                 while (potentialRestart && !potentialRestart.getNeighbor()) {
-                    if (!stack.length) {
+                    if (!this.stack.length) {
                         potentialRestart.visited = true
-                        map = true;
+                        this.map = true;
                         noLoop();
                         break;
                     } else {
-                        potentialRestart = stack.pop();
+                        potentialRestart = this.stack.pop();
                     }
                 }
                 this.current = potentialRestart;
-                // console.log(this.current)
+                // console.log(this.this.current)
                 // } else if(allVisited) {
                 //     noLoop();
             }
@@ -116,7 +119,7 @@ class Maze{
 
         // }
 
-        // // current.highlight();
+        // // this.current.highlight();
 
         // function keyPressed() {
         //     game.userMove();
@@ -138,6 +141,12 @@ class Maze{
 
     }
 
+    // this.mapComplete = function(){
+    //     return this.map;
+    // }
+
 }
 
 module.exports = Maze;
+
+// window.draw = draw;

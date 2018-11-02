@@ -2,6 +2,7 @@ const Cell = require('./cell');
 // const MovingObject = require('./moving_objects');
 // const User = require('./user');
 const Game = require('./game');
+const Maze = require('./maze');
 
 // window.MovingObject = MovingObject;
 
@@ -14,9 +15,10 @@ const stack = [];
 let game = new Game();
 window.addEventListener("keypress", (event) => (game.userMove(event)));
 
-let map = false;
 
-let gameEnd = false;
+let maze;
+
+let mapComplete = false;
 
 // const user = new User();
 
@@ -36,6 +38,7 @@ function setup() {
   let current_col = Math.floor(Math.random() * 20);
 
   current = grid[current_row][current_col];
+  maze = new Maze(current, grid)
 
   //   console.log("current")
 //   console.log(current)
@@ -44,141 +47,153 @@ function setup() {
   
 }
 
+// const maze = new Maze(current, grid);
+
 function draw() {
-    background(51)
-
-    if(!map && !gameEnd){
-        if (current) {
-            current.visited = true;
-        // current.highlight();
-            stack.push(current);
-        }
-    
-    
-        // let nextCell = current.getNextCell(current.row, current.col);
-        let nextCell = current.getNeighbor();
-    
-        // console.log("nextcell")
-        // console.log(nextCell);
-        
-        this.removeWalls = function(current, next, grid){
-            const changeX = current.row - next.row;
-            const changeY = current.col - next.col;
-            
-            // current.walls.forEach(wall => wall.present = false)
-            
-    
-            switch(changeX){
-                case 1:
-                    current.walls[0].present = false;  
-                    next.walls[2].present = false;
-                    break;
-                case -1:
-                    current.walls[2].present = false;
-                    next.walls[0].present = false;
-                    break;
-            }
-    
-            switch (changeY) {
-                case 1:
-                    current.walls[3].present = false;
-                    next.walls[1].present = false;
-                    break;
-                case -1:
-                    current.walls[1].present = false;
-                    next.walls[3].present = false;
-                    break;
-            }
-    
-            // const firstRow = grid[0];
-            // const lastRow = grid[19];
-    
-            // for (let i = 0; i < firstRow.length; i++) {
-            //     firstRow[i].walls[3].present = true
-            // }
-    
-            // for (let i = 0; i < lastRow.length; i++) {
-            //     lastRow[i].walls[1].present = true
-            // }
-    
-            // const firstCol = grid.filter((cell) => {
-            //     return cell.col === 0
-            // })
-    
-            // const lastCol = grid.filter((cell) => {
-            //     return cell.col === 19
-            // })
-    
-            // for (let i = 0; i < firstCol.length; i++) {
-            //     firstCol[i].walls[2].present = true;
-            // }
-    
-            // for (let i = 0; i < lastCol.length; i++) {
-            //     lastCol[i].walls[0].present = true;
-            // }
-        } 
-    
-        if(nextCell){
-            nextCell.visited = true;
-            this.removeWalls(current, nextCell, grid);
-            current = nextCell;
-            // console.log("stack")
-            // console.log(stack);
-        } else if(stack.length > 0){
-            potentialRestart = stack.pop()
-                while (potentialRestart && !potentialRestart.getNeighbor()){
-                    if(!stack.length){
-                        potentialRestart.visited = true
-                        map = true;
-                        noLoop();
-                        break;
-                    } else {
-                        potentialRestart = stack.pop();
-                    }
-                }
-                current = potentialRestart;
-                // console.log(current)
-        // } else if(allVisited) {
-        //     noLoop();
-        }
-    
-    
-        for (let i = 0; i < grid.length; i++) {
-            for (let j = 0; j < grid[i].length; j++) {
-                grid[i][j].render();
-            }
-        }
-
-        game.userRender();
-    } else if(map && !gameEnd){
-        // loop()
-        console.log("hi")
-        game.userRender();
-        // game.userMove();
-        keyPressed();
-        
-    }
-    
-    // current.highlight();
-    
-    function keyPressed(){
-        // loop();
-        game.userMove();
-        // loop()        
-        return false;
-    }
-
-    keyPressed();
-
-    // user.render();
-
-    
-
-    // redraw();
-    
-    // while (!game.end()){
-    //     game.userMove()
+    // if(!mapComplete){
+        maze.draw();
+        // mapComplete = maze.mapComplete();
     // }
+    game.userRender();
+    game.userMove();
+    // background(51)
+
+    // if(!map && !gameEnd){
+    //     if (current) {
+    //         current.visited = true;
+    //     // current.highlight();
+    //         stack.push(current);
+    //     }
+    
+    
+    //     // let nextCell = current.getNextCell(current.row, current.col);
+    //     let nextCell = current.getNeighbor();
+    
+    //     // console.log("nextcell")
+    //     // console.log(nextCell);
+        
+    //     this.removeWalls = function(current, next, grid){
+    //         const changeX = current.row - next.row;
+    //         const changeY = current.col - next.col;
+
+    
+    //         switch(changeX){
+    //             case 1:
+    //                 current.walls[0].present = false;  
+    //                 next.walls[2].present = false;
+    //                 break;
+    //             case -1:
+    //                 current.walls[2].present = false;
+    //                 next.walls[0].present = false;
+    //                 break;
+    //         }
+    
+    //         switch (changeY) {
+    //             case 1:
+    //                 current.walls[3].present = false;
+    //                 next.walls[1].present = false;
+    //                 break;
+    //             case -1:
+    //                 current.walls[1].present = false;
+    //                 next.walls[3].present = false;
+    //                 break;
+    //         }
+    
+    //         // const firstRow = grid[0];
+    //         // const lastRow = grid[19];
+    
+    //         // for (let i = 0; i < firstRow.length; i++) {
+    //         //     firstRow[i].walls[3].present = true
+    //         // }
+    
+    //         // for (let i = 0; i < lastRow.length; i++) {
+    //         //     lastRow[i].walls[1].present = true
+    //         // }
+    
+    //         // const firstCol = grid.filter((cell) => {
+    //         //     return cell.col === 0
+    //         // })
+    
+    //         // const lastCol = grid.filter((cell) => {
+    //         //     return cell.col === 19
+    //         // })
+    
+    //         // for (let i = 0; i < firstCol.length; i++) {
+    //         //     firstCol[i].walls[2].present = true;
+    //         // }
+    
+    //         // for (let i = 0; i < lastCol.length; i++) {
+    //         //     lastCol[i].walls[0].present = true;
+    //         // }
+    //     } 
+    
+    //     if(nextCell){
+    //         nextCell.visited = true;
+    //         this.removeWalls(current, nextCell, grid);
+    //         current = nextCell;
+    //         // console.log("stack")
+    //         // console.log(stack);
+    //     } else if(stack.length > 0){
+    //         potentialRestart = stack.pop()
+    //             while (potentialRestart && !potentialRestart.getNeighbor()){
+    //                 if(!stack.length){
+    //                     potentialRestart.visited = true
+    //                     map = true;
+    //                     noLoop();
+    //                     break;
+    //                 } else {
+    //                     potentialRestart = stack.pop();
+    //                 }
+    //             }
+    //             current = potentialRestart;
+    //             // console.log(current)
+    //     // } else if(allVisited) {
+    //     //     noLoop();
+    //     }
+    
+    
+    //     for (let i = 0; i < grid.length; i++) {
+    //         for (let j = 0; j < grid[i].length; j++) {
+    //             grid[i][j].render();
+    //         }
+    //     }
+
+    //     game.userRender();
+    // } else if(map && !gameEnd){
+    //     // loop()
+    //     console.log("hi")
+    //     game.userRender();
+    //     // game.userMove();
+    //     keyPressed();
+        
+    //     for (let i = 0; i < grid.length; i++) {
+    //         for (let j = 0; j < grid[i].length; j++) {
+    //             grid[i][j].render();
+    //         }
+    //     }
+        
+    // }
+    
+    // // current.highlight();
+    
+    // function keyPressed(){
+    //     // loop();
+    //     game.userMove();
+    //     // loop()        
+    //     return false;
+    // }
+
+    // keyPressed();
+
+    // // user.render();
+
+    
+
+    // // redraw();
+    
+    // // while (!game.end()){
+    // //     game.userMove()
+    // // }
 
 }
 
