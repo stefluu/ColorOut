@@ -51,10 +51,15 @@ function setup() {
 
 function draw() {
     // if(!mapComplete){
-        maze.draw();
+    maze.draw();
         // mapComplete = maze.mapComplete();
     // }
-    game.userRender();
+    game.userRender(0, 0);
+
+    // const keypress = event.keyCode;
+    // console.log(event);
+
+
     game.userMove();
     // background(51)
 
