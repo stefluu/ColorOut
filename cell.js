@@ -11,7 +11,7 @@ function Cell(row, col, grid) {
     // [1, 2, 3, 4].forEach(() => this.walls.push(new Wall()));
 
     this.highlight = function(){
-        console.log(this.row, this.col);
+        // console.log(this.row, this.col);
         const startRow = this.row * 40;
         const startCol = this.col * 40;
         noStroke();
@@ -37,7 +37,7 @@ function Cell(row, col, grid) {
         
         if (this.visited) {
             noStroke();
-            rect(startRow+1, startCol+1, 30, 30)
+            rect(startRow+1, startCol+1, 40, 40)
             fill("green");
         }
         

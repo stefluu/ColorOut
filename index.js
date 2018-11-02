@@ -4,6 +4,8 @@ const grid = [];
 
 let current;
 
+const stack = [];
+
 function setup() {
   createCanvas(800, 800);
 //   cols = 10;
@@ -12,7 +14,7 @@ function setup() {
   for(let x = 0; x < 20; x++){
       grid[x] = [];
       for(let y = 0; y < 20; y++){
-        grid[x].push(new Cell(x, y, grid))
+        grid[x].push(new Cell(x, y, grid, stack))
       }
   }
 
@@ -20,18 +22,23 @@ function setup() {
   let current_col = Math.floor(Math.random() * 20);
 
   current = grid[current_row][current_col];
-//   console.log("current")
+
+  //   console.log("current")
 //   console.log(current)
   
-  frameRate(5);
+  frameRate(8);
   
 }
 
 function draw() {
     background(51)
+
     
-    current.visited = true;
-    current.highlight()
+    if (current) {
+        current.visited = true;
+    // current.highlight();
+        stack.push(current);
+    }
 
 
     // let nextCell = current.getNextCell(current.row, current.col);
@@ -70,21 +77,47 @@ function draw() {
         }
     } 
     
+    // let allVisited = grid.every((cell)=>{
+    //     return cell.visited
+    // })
+
     if(nextCell){
         nextCell.visited = true;
         this.removeWalls(current, nextCell);
         current = nextCell;
-        console.log(current);
-    } else {
+        // console.log("stack")
+        // console.log(stack);
+    } else if(stack.length > 0){
+        potentialRestart = stack.pop()
+            while (potentialRestart && !potentialRestart.getNeighbor()){
+                if(!stack.length){
+                    potentialRestart.visited = true
+                    noLoop();
+                } else {
+                    potentialRestart = stack.pop();
+                }
+            }
+            current = potentialRestart;
+            // console.log(current)
+            if(current){
+                loop();
+            } else {
+                console.log('a');
+                noLoop();
+            }
+    // } else if(allVisited) {
+    //     noLoop();
+    } else{
         noLoop();
     }
+
 
     for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid[i].length; j++) {
             grid[i][j].render();
         }
     }
-    current.highlight();
+    // current.highlight();
 
 
 }

@@ -18,7 +18,7 @@ class Wall {
   }
 
   derender(wallPos, x, y) {
-    stroke(0);
+    stroke("green");
     switch (wallPos) {
       case 0:
         line(x, y, x, y + 40);
