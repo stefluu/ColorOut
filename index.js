@@ -12,6 +12,7 @@ let current;
 const stack = [];
 
 let game = new Game();
+window.addEventListener("keypress", (event) => (game.userMove(event)));
 
 let map = false;
 

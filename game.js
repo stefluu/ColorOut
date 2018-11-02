@@ -17,7 +17,9 @@ function Game(){
         this.user.pos === this.end
     }
 
-    this.userMove = function(){
+    this.userMove = function(event){
+        // const keypress = event.keyCode;
+        console.log(event);
         if (keyIsDown(LEFT_ARROW)) {
             this.user.updatePos([y, -40]);
             this.user.render();
