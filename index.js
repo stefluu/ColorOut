@@ -26,7 +26,7 @@ function setup() {
   //   console.log("current")
 //   console.log(current)
   
-  frameRate(8);
+  frameRate(30);
   
 }
 
@@ -93,22 +93,15 @@ function draw() {
                 if(!stack.length){
                     potentialRestart.visited = true
                     noLoop();
+                    break;
                 } else {
                     potentialRestart = stack.pop();
                 }
             }
             current = potentialRestart;
             // console.log(current)
-            if(current){
-                loop();
-            } else {
-                console.log('a');
-                noLoop();
-            }
     // } else if(allVisited) {
     //     noLoop();
-    } else{
-        noLoop();
     }
 
 
