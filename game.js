@@ -18,30 +18,40 @@ function Game(){
     }
 
     this.userMove = function(){
+
+        let userPos = this.user.pos;
+        let x = userPos[0];
+        let y = userPos[1];
+        // const keypress = event.keyCode;
+        // console.log(event);
         if (keyIsDown(LEFT_ARROW)) {
-            this.user.updatePos([y, -40]);
-            this.user.render();
+            // console.log(this.user.pos)
+            this.user.updatePos(["y", -40]);
+            this.user.render(this.user.pos[0], this.user.pos[1]);
         }
     
         if (keyIsDown(RIGHT_ARROW)) {
-            this.user.updatePos([y, 40]);
-            this.user.render();
+            this.user.updatePos(["y", 40]);
+            this.user.render(this.user.pos[0], this.user.pos[1]);
         }
     
         if (keyIsDown(UP_ARROW)) {
-            this.user.updatePos([x, -40]);
-            this.user.render();
+            this.user.updatePos(["x", -40]);
+            this.user.render(this.user.pos[0], this.user.pos[1]);
         }
     
         if (keyIsDown(DOWN_ARROW)) {
-            this.user.updatePos([x, 40]);
-            this.user.render();
+            this.user.updatePos(["x", 40]);
+            this.user.render(this.user.pos[0], this.user.pos[1]);
         }
         
-        const colors = ["lightcoral", "orange", "Chartreuse", "darkcyan", "darkorchid"];
-        let currentColor = colors[Math.floor(Math.random() * colors.length)];
-        fill(currentColor);
-        ellipse(19, 19, 15, 15);
+        // this.user.update();
+        // this.user.display();
+        // const colors = ["lightcoral", "orange", "Chartreuse", "darkcyan", "darkorchid"];
+        // let currentColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // fill(currentColor);
+        // ellipse(19, 19, 15, 15);
     }
 
 }

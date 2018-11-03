@@ -9,10 +9,10 @@ function User(){
 
     this.updatePos = function(posChange){
         switch(posChange[0]){
-            case x:
+            case "x":
                 let updatedX = this.pos[0] + posChange[1];
                 this.pos = [updatedX, this.pos[1]];
-            case y:
+            case "y":
                 let updatedY = this.pos[1] + posChange[1];
                 this.pos = [this.pos[1], updatedY]; 
         }
@@ -22,7 +22,34 @@ function User(){
     this.render = function(x, y) {
 
         fill(currentColor);
-        ellipse(19, 19, 15, 15);
+        ellipse((x+20), (y+20), 15, 15);
+    }
+
+    this.draw = function(){
+        let x = this.pos[0];
+        let y = this.pos[1];
+        // const keypress = event.keyCode;
+        // console.log(event);
+        if (keyIsDown(LEFT_ARROW)) {
+            // console.log(this.user.pos)
+            this.updatePos(["y", -40]);
+            this.render(this.pos[0], this.pos[1]);
+        }
+
+        if (keyIsDown(RIGHT_ARROW)) {
+            this.updatePos(["y", 40]);
+            this.render(this.pos[0], this.pos[1]);
+        }
+
+        if (keyIsDown(UP_ARROW)) {
+            this.updatePos(["x", -40]);
+            this.render(this.pos[0], this.pos[1]);
+        }
+
+        if (keyIsDown(DOWN_ARROW)) {
+            this.updatePos(["x", 40]);
+            this.render(this.pos[0], this.pos[1]);
+        }
     }
 }
 
