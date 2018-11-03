@@ -25,7 +25,7 @@ function Game(){
         // const keypress = event.keyCode;
         // console.log(event);
         if (keyIsDown(LEFT_ARROW)) {
-            console.log(this.user.pos)
+            // console.log(this.user.pos)
             this.user.updatePos(["y", -40]);
             this.user.render(this.user.pos[0], this.user.pos[1]);
         }

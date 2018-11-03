@@ -1,9 +1,10 @@
-function Maze(current, grid){
+function Maze(current, grid, game){
     
     this.current = current;
     this.grid = grid;
     this.stack = [];
     this.map = false;
+    this.game = game;
 
     this.draw = function(){
 
@@ -91,9 +92,16 @@ function Maze(current, grid){
                 while (potentialRestart && !potentialRestart.getNeighbor()) {
                     if (!this.stack.length) {
                         potentialRestart.visited = true
+                        // game.userMove();
                         this.map = true;
-                        noLoop();
                         break;
+                        console.log("finish")
+                        if(map){
+                            console.log("hi")
+                            game.userMove();
+                        }
+                        // noLoop();
+                        // break;
                     } else {
                         potentialRestart = this.stack.pop();
                     }

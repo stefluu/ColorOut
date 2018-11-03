@@ -38,7 +38,7 @@ function setup() {
   let current_col = Math.floor(Math.random() * 20);
 
   current = grid[current_row][current_col];
-  maze = new Maze(current, grid)
+  maze = new Maze(current, grid, game)
 
   //   console.log("current")
 //   console.log(current)
@@ -54,13 +54,19 @@ function draw() {
     maze.draw();
         // mapComplete = maze.mapComplete();
     // }
-    game.userRender(0, 0);
+    console.log("finish maze")
+    game.userMove();
+    game.userRender();
+    // game.userRender(0, 0);
 
     // const keypress = event.keyCode;
     // console.log(event);
 
 
-    game.userMove();
+    // game.userMove();
+    // game.user.draw();
+
+    // loop();
     // background(51)
 
     // if(!map && !gameEnd){
@@ -201,6 +207,7 @@ function draw() {
     // // }
 
 }
+
 
 // function Cell(row, col) {
 //     this.row = row;
