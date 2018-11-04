@@ -419,9 +419,9 @@ window.draw = draw;
 
 //   //   console.log("current")
 // //   console.log(current)
-  
+
 //   frameRate(100);
-  
+
 // }
 
 // function draw() {
@@ -433,21 +433,21 @@ window.draw = draw;
 //         // current.highlight();
 //             stack.push(current);
 //         }
-    
-    
+
+
 //         // let nextCell = current.getNextCell(current.row, current.col);
 //         let nextCell = current.getNeighbor();
-    
+
 //         // console.log("nextcell")
 //         // console.log(nextCell);
-        
+
 //         this.removeWalls = function(current, next, grid){
 //             const changeX = current.row - next.row;
 //             const changeY = current.col - next.col;
-            
+
 //             // current.walls.forEach(wall => wall.present = false)
-            
-    
+
+
 //             switch(changeX){
 //                 case 1:
 //                     current.walls[0].present = false;  
@@ -458,7 +458,7 @@ window.draw = draw;
 //                     next.walls[0].present = false;
 //                     break;
 //             }
-    
+
 //             switch (changeY) {
 //                 case 1:
 //                     current.walls[3].present = false;
@@ -469,35 +469,35 @@ window.draw = draw;
 //                     next.walls[3].present = false;
 //                     break;
 //             }
-    
+
 //             // const firstRow = grid[0];
 //             // const lastRow = grid[19];
-    
+
 //             // for (let i = 0; i < firstRow.length; i++) {
 //             //     firstRow[i].walls[3].present = true
 //             // }
-    
+
 //             // for (let i = 0; i < lastRow.length; i++) {
 //             //     lastRow[i].walls[1].present = true
 //             // }
-    
+
 //             // const firstCol = grid.filter((cell) => {
 //             //     return cell.col === 0
 //             // })
-    
+
 //             // const lastCol = grid.filter((cell) => {
 //             //     return cell.col === 19
 //             // })
-    
+
 //             // for (let i = 0; i < firstCol.length; i++) {
 //             //     firstCol[i].walls[2].present = true;
 //             // }
-    
+
 //             // for (let i = 0; i < lastCol.length; i++) {
 //             //     lastCol[i].walls[0].present = true;
 //             // }
 //         } 
-    
+
 //         if(nextCell){
 //             nextCell.visited = true;
 //             this.removeWalls(current, nextCell, grid);
@@ -521,8 +521,8 @@ window.draw = draw;
 //         // } else if(allVisited) {
 //         //     noLoop();
 //         }
-    
-    
+
+
 //         for (let i = 0; i < grid.length; i++) {
 //             for (let j = 0; j < grid[i].length; j++) {
 //                 grid[i][j].render();
@@ -536,11 +536,11 @@ window.draw = draw;
 //         game.userRender();
 //         // game.userMove();
 //         keyPressed();
-        
+
 //     }
-    
+
 //     // current.highlight();
-    
+
 //     function keyPressed(){
 //         // loop();
 //         game.userMove();
@@ -552,10 +552,10 @@ window.draw = draw;
 
 //     // user.render();
 
-    
+
 
 //     // redraw();
-    
+
 //     // while (!game.end()){
 //     //     game.userMove()
 //     // }
@@ -583,11 +583,11 @@ window.draw = draw;
 // //             rect(startRow, startCol, 40, 40)
 // //             fill("green");
 // //         }
-        
+
 // //     }
 
 // //     this.getNeighbor = function(){
-        
+
 // //         // const neighborsIndices = [
 // //         //     [row - 1, col],
 // //         //     [row + 1, col],
@@ -608,7 +608,7 @@ window.draw = draw;
 // //         //     if(idxArr.every((idx) => {
 // //         //         return idx < 20 && idx >= 0}
 // //         //         )){
-                
+
 // //         //         neighbors.push(idxArr);
 // //         //     }
 // //         // }
@@ -655,7 +655,7 @@ window.draw = draw;
 // //         //     } else{
 // //         //         return true
 // //         //     }
-            
+
 // //         // }
 
 // //         // const validateNeighbors = function(neighbor){
@@ -670,11 +670,11 @@ window.draw = draw;
 // //                 validNeighbors.push(neighbors[i])
 // //             }
 // //         }
-        
-        
+
+
 // //         console.log("valid") 
 // //         console.log(validNeighbors)
-        
+
 // //         let nextCell;
 
 // //         if(validNeighbors.length > 0){
@@ -682,25 +682,25 @@ window.draw = draw;
 // //             return nextCell;
 // //         }
 // //         // let nextCell = 
-        
+
 // //         // //need to check if nextCell is true bc it could be undefined at the edges
 // //         // while(nextCell && nextCell.visited){
 // //             //     nextCell = this.chooseRandomNeighbor(neighbors)
-            
+
 // //             //     if(nextCell && !nextCell.visited){
 // //                 //         return nextCell
 // //                 //     }
 // //                 // }
-                
+
 // //                 // if (nextCell) {
 // //                     //     rect(startRow, startCol, 40, 40)
 // //                     //     fill("purple");
 // //                     // }
 // //                     // console.log(nextCell)
 // //                     // return nextCell;
-           
+
 // //     }
-    
+
 // //     this.chooseRandomNeighbor = function(validNeighbors) {
 // //        return validNeighbors[Math.floor(Math.random() * validNeighbors.length)] 
 // //     }

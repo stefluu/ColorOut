@@ -111,22 +111,22 @@ module.exports = Game;
 //             this.user.updatePos(["y", -40]);
 //             this.user.render();
 //         }
-    
+
 //         if (keyIsDown(RIGHT_ARROW)) {
 //             this.user.updatePos(["y", 40]);
 //             this.user.render();
 //         }
-    
+
 //         if (keyIsDown(UP_ARROW)) {
 //             this.user.updatePos(["x", -40]);
 //             this.user.render();
 //         }
-    
+
 //         if (keyIsDown(DOWN_ARROW)) {
 //             this.user.updatePos(["x", 40]);
 //             this.user.render();
 //         }
-        
+
 //         const colors = ["lightcoral", "orange", "Chartreuse", "darkcyan", "darkorchid"];
 //         let currentColor = colors[Math.floor(Math.random() * colors.length)];
 //         fill(currentColor);
@@ -162,6 +162,6 @@ module.exports = Game;
 // //     }
 
 // //     for(let i = 0; i < this.cells.length; i++){
-        
+
 // //     }
 

@@ -64,7 +64,7 @@ module.exports = User;
 //     const colors = ["lightcoral", "orange", "Chartreuse", "darkcyan", "darkorchid"];
 //     let currentColor = colors[Math.floor(Math.random() * colors.length)];
 
-    
+
 //     this.updatePos = function(posChange){
 //         switch(posChange[0]){
 //             case "x":
@@ -76,7 +76,7 @@ module.exports = User;
 //         }
 //     }
 
-    
+
 //     this.render = function(x, y) {
 
 //         fill(currentColor);

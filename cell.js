@@ -249,7 +249,7 @@ module.exports = Cell;
 //         // x, y, width, height
 //         // rect(startX, startY, 40, 40)
 //         // noFill();
-        
+
 //         for (let i = 0; i < this.walls.length; i++) {
 //             if(this.walls[i].present){
 //                 this.walls[i].render(i, startRow, startCol);
@@ -257,15 +257,15 @@ module.exports = Cell;
 //                 this.walls[i].derender(i, startRow, startCol);
 //             }
 //         }
-        
-        
+
+
 //         if (this.visited) {
 //             noStroke();
 //             fill("white");
 //             rect(startRow+1, startCol+1, 38, 38)
 //         }
 
-        
+
 //     }
 
 
@@ -319,7 +319,7 @@ module.exports = Cell;
 //         // ]
 
 //         // const neighbors = [];
-        
+
 //         // const validateIdx = function (idx) {
 //         //     idx >= 0 && idx < 20
 //         // }
