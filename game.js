@@ -27,12 +27,12 @@ function Game(grid) {
         let prevGridPosCell = this.grid[gridPos[0]][gridPos[1]];
         // const keypress = event.keyCode;
         // console.log(event);
-        if (keyIsDown(LEFT_ARROW)) {
+        if (keyIsDown(UP_ARROW)) {
             // console.log(this.user.pos)
             this.user.updatePos(["y", -40]);
             this.user.updateGridPos(["y", -1], userPos);
             if(!prevGridPosCell.walls[3]) {
-                this.user.render(this.user.pos[0], this.user.pos[1]);
+                this.user.render(this.user.pos[2], this.user.pos[1]);
             }
         }
 
@@ -42,21 +42,24 @@ function Game(grid) {
 
             if (!prevGridPosCell.walls[1]) {
                 this.user.render(this.user.pos[0], this.user.pos[1]);
-            }        }
+            }        
+        }
 
-        if (keyIsDown(UP_ARROW)) {
+        if (keyIsDown(LEFT_ARROW)) {
             this.user.updatePos(["x", -40]);
             this.user.updateGridPos(["x", -1], userPos);
             if (!prevGridPosCell.walls[2]) {
-                this.user.render(this.user.pos[0], this.user.pos[1]);
-            }        }
+                this.user.render(this.user.pos[3], this.user.pos[1]);
+            }        
+        }
 
         if (keyIsDown(RIGHT_ARROW)) {
             this.user.updatePos(["x", 40]);
             this.user.updateGridPos(["x", 1], userPos);
             if (!prevGridPosCell.walls[0]) {
-                this.user.render(this.user.pos[0], this.user.pos[1]);
-            }        }
+                this.user.render(this.user.pos[1], this.user.pos[1]);
+            }        
+        }
 
         // this.user.update();
         // this.user.display();
