@@ -36,11 +36,11 @@ function User(grid) {
                 this.gridPos = [updatedX, this.gridPos[1]];
                 break;
         }
-        console.log("grid pos")
-        console.log(this.gridPos)
+        // console.log("grid pos")
+        // console.log(this.gridPos)
     }
 
-    this.render = function (x, y) {
+    this.render = function () {
         // fill(currentColor);
         // ellipse((x+20), (y+20), 15, 15);
         let nextCell = this.grid[this.gridPos[0]][this.gridPos[1]]

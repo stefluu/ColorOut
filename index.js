@@ -44,6 +44,7 @@ function setup() {
 
     //   console.log("current")
     //   console.log(current)
+    game.userRender(0, 0);
 
     frameRate(100);
 

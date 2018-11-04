@@ -6,13 +6,14 @@ function Game(grid) {
     this.user = new User(this.grid);
     // this.userPos = [0, 0];
 
+
     this.userRender = function () {
         this.user.render(this.user.pos[0], this.user.pos[1]);
     }
 
-    this.play = function () {
-        this.userMove();
-    }
+    // this.play = function () {
+    //     this.userMove();
+    // }
 
     this.end = function (userPos) {
         this.user.pos === this.end
@@ -31,7 +32,9 @@ function Game(grid) {
             // console.log(this.user.pos)
             this.user.updatePos(["y", -40]);
             this.user.updateGridPos(["y", -1], userPos);
-            if(!prevGridPosCell.walls[3]) {
+            let prevGridPosCell = this.grid[gridPos[0]+1][gridPos[1]];
+            if(!prevGridPosCell.walls[0]) {
+                console.log("hi")
                 this.user.render(this.user.pos[2], this.user.pos[1]);
             }
         }
@@ -39,8 +42,11 @@ function Game(grid) {
         if (keyIsDown(DOWN_ARROW)) {
             this.user.updatePos(["y", 40]);
             this.user.updateGridPos(["y", 1], userPos);
+            console.log(prevGridPosCell.walls[2]);
+            console.log(!(prevGridPosCell.walls[2]));
 
-            if (!prevGridPosCell.walls[1]) {
+            if (!(prevGridPosCell.walls[2])) {
+                console.log("derp")
                 this.user.render(this.user.pos[0], this.user.pos[1]);
             }        
         }
@@ -48,7 +54,7 @@ function Game(grid) {
         if (keyIsDown(LEFT_ARROW)) {
             this.user.updatePos(["x", -40]);
             this.user.updateGridPos(["x", -1], userPos);
-            if (!prevGridPosCell.walls[2]) {
+            if (!prevGridPosCell.walls[3]) {
                 this.user.render(this.user.pos[3], this.user.pos[1]);
             }        
         }
@@ -56,7 +62,7 @@ function Game(grid) {
         if (keyIsDown(RIGHT_ARROW)) {
             this.user.updatePos(["x", 40]);
             this.user.updateGridPos(["x", 1], userPos);
-            if (!prevGridPosCell.walls[0]) {
+            if (!prevGridPosCell.walls[1]) {
                 this.user.render(this.user.pos[1], this.user.pos[1]);
             }        
         }
