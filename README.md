@@ -1,4 +1,4 @@
-# ColorUp
+# ColorOut
 
 Background and Overview:
 
