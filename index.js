@@ -103,7 +103,6 @@ function draw() {
     game.userMove();
 
     if (game.end()) {
-        console.log("derp")
         const randomCongratsColors = [
             "0 0 10px #fff, 0 0 20px #fff, 0 0 30px MidnightBlue, 0 0 40px MidnightBlue, 0 0 50px MidnightBlue, 0 0 60px MidnightBlue, 0 0 70px MidnightBlue",
             "0 0 10px #fff, 0 0 20px #fff, 0 0 30px MediumVioletRed, 0 0 40px MediumVioletRed, 0 0 50px MediumVioletRed, 0 0 60px MediumVioletRed, 0 0 70px MediumVioletRed",

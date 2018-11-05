@@ -48,7 +48,6 @@ function Game(grid) {
   
               renderCell.updateUserVisit();
               this.user.render(this.renderCellPos[0], this.renderCellPos[1]);
-              console.log(this.user.gridPos);
 
             }
         }
@@ -61,7 +60,6 @@ function Game(grid) {
             let renderCell = this.grid[this.renderCellPos[0]][this.renderCellPos[1]];
             renderCell.updateUserVisit();
             this.user.render(this.renderCellPos[0], this.renderCellPos[1]);
-            console.log(this.user.gridPos);
 
           }
         }
@@ -74,7 +72,6 @@ function Game(grid) {
             let renderCell = this.grid[this.renderCellPos[0]][this.renderCellPos[1]];
             renderCell.updateUserVisit();
             this.user.render(this.renderCellPos[0], this.renderCellPos[1]);
-            console.log(this.user.gridPos);
 
           }
         }
@@ -88,7 +85,6 @@ function Game(grid) {
 
             renderCell.updateUserVisit();
             this.user.render(this.renderCellPos[0], this.renderCellPos[1]);
-            console.log(this.user.gridPos);
           }
         }
 
