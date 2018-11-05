@@ -19,7 +19,7 @@ function Game(grid) {
     // }
 
     this.end = function () {
-        this.renderCellPos === [19, 19]
+       return (this.user.gridPos[0] === 19 && this.user.gridPos[1] === 19)
     }
 
     
@@ -41,13 +41,15 @@ function Game(grid) {
 
         if (keyIsPressed && key === 'ArrowUp' && endTime - this.startTime > 100) {
             this.startTime = endTime;
-            if (prevGridPosCell.walls[0].color === "white") {
+            if (prevGridPosCell.walls[3].color === "white") {
               this.user.updateGridPos(["y", -1], userPos);
               this.renderCellPos = this.user.gridPos;
               let renderCell = this.grid[this.renderCellPos[0]][this.renderCellPos[1]];
-              debugger
+  
               renderCell.updateUserVisit();
               this.user.render(this.renderCellPos[0], this.renderCellPos[1]);
+              console.log(this.user.gridPos);
+
             }
         }
 
@@ -57,9 +59,10 @@ function Game(grid) {
             this.user.updateGridPos(["y", 1], userPos);
             this.renderCellPos = this.user.gridPos;
             let renderCell = this.grid[this.renderCellPos[0]][this.renderCellPos[1]];
-            debugger
             renderCell.updateUserVisit();
             this.user.render(this.renderCellPos[0], this.renderCellPos[1]);
+            console.log(this.user.gridPos);
+
           }
         }
 
@@ -69,9 +72,10 @@ function Game(grid) {
             this.user.updateGridPos(["x", -1], userPos);
             this.renderCellPos = this.user.gridPos;
             let renderCell = this.grid[this.renderCellPos[0]][this.renderCellPos[1]];
-            debugger
             renderCell.updateUserVisit();
             this.user.render(this.renderCellPos[0], this.renderCellPos[1]);
+            console.log(this.user.gridPos);
+
           }
         }
 
@@ -81,9 +85,10 @@ function Game(grid) {
             this.user.updateGridPos(["x", 1], userPos);
             this.renderCellPos = this.user.gridPos;
             let renderCell = this.grid[this.renderCellPos[0]][this.renderCellPos[1]];
-            debugger
+
             renderCell.updateUserVisit();
             this.user.render(this.renderCellPos[0], this.renderCellPos[1]);
+            console.log(this.user.gridPos);
           }
         }
 

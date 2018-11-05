@@ -11,7 +11,7 @@ let current;
 const stack = [];
 
 let game;
-window.addEventListener("keypress", (event) => (game.userMove(event)));
+// window.addEventListener("keypress", (event) => (game.userMove(event)));
 
 
 let maze;
@@ -51,7 +51,7 @@ function setup() {
     directions.style.boxShadow = chosenGlow;
 
 
-    directions1 = createElement("h3", "Run around the white maze to render color and exit the maze!")
+    directions1 = createElement("h3", "Run around the white maze to render colorful shapes!")
     directions1.parent(directionsDiv);
     
     directions2 = createElement("h4", "The exit to the maze is at the gray dot!");
@@ -91,7 +91,9 @@ function setup() {
     game = new Game(grid);
     maze = new Maze(current, grid, game)
 
+
     frameRate(100);
+
 }
 
 
@@ -99,8 +101,35 @@ function setup() {
 function draw() {
     maze.draw();
     game.userMove();
+
+    if (game.end()) {
+        console.log("derp")
+        const randomCongratsColors = [
+            "0 0 10px #fff, 0 0 20px #fff, 0 0 30px MidnightBlue, 0 0 40px MidnightBlue, 0 0 50px MidnightBlue, 0 0 60px MidnightBlue, 0 0 70px MidnightBlue",
+            "0 0 10px #fff, 0 0 20px #fff, 0 0 30px MediumVioletRed, 0 0 40px MediumVioletRed, 0 0 50px MediumVioletRed, 0 0 60px MediumVioletRed, 0 0 70px MediumVioletRed",
+            "0 0 10px #fff, 0 0 20px #fff, 0 0 30px IndianRed, 0 0 40px IndianRed, 0 0 50px IndianRed, 0 0 60px IndianRed, 0 0 70px IndianRed",
+            "0 0 10px #fff, 0 0 20px #fff, 0 0 30px DarkCyan, 0 0 40px DarkCyan, 0 0 50px DarkCyan, 0 0 60px DarkCyan, 0 0 70px DarkCyan",
+            "0 0 10px #fff, 0 0 20px #fff, 0 0 30px SeaGreen, 0 0 40px SeaGreen, 0 0 50px SeaGreen, 0 0 60px SeaGreen, 0 0 70px SeaGreen",
+
+        ]
+
+        let chosenCongrats = randomCongratsColors[Math.floor(Math.random() * 5)]
+        
+        const directions = document.querySelector(".directions");
+        congrats = createElement("h1", "CONGRATULATIONS! YOU WIN!");
+        congrats.id("congrats");
+        congrats.parent(directions);
+
+        congratsMsg = document.getElementById("congrats");
+        congratsMsg.style.textShadow = chosenCongrats;
+        congratsMsg.style.fontSize = "55px";
+        noLoop();
+    }
 }
 
 window.setup = setup;
 
 window.draw = draw;
+
+//credit: https://www.youtube.com/watch?v=HyK_Q5rrcr4&list=PLhHyq-ZjXQx8-K2oRTtMM_xdcxhf1-wZc&index=2
+//credit: https://www.w3schools.com/howto/howto_css_glowing_text.asp

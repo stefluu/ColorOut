@@ -5,8 +5,8 @@ class Wall {
   }
 
   render(wallPos, x, y) {
-    stroke("black");
-    strokeWeight(3);
+    stroke("gray");
+    strokeWeight(4);
     switch (wallPos) {
       case 0:
         line(x, y, x, y + 40);
@@ -37,7 +37,26 @@ class Wall {
         this.color = "white";
     }
   }
+
+  // renderDiscovered(wallPos, x, y){
+  //   stroke("black");
+  //   // strokeWeight(3);
+  //   if(this.wallPos){
+  //     switch (wallPos) {
+  //       case 0:
+  //         line(x, y, x, y + 40);
+  //       case 1:
+  //         line(x, y + 40, x + 40, y + 40);
+  //       case 2:
+  //         line(x + 40, y + 40, x + 40, y);
+  //       case 3:
+  //         line(x + 40, y, x, y);
+  //     }
+  //   }
+  // }
 }
+
+
 
 
 module.exports = Wall;

@@ -59,26 +59,34 @@ function Cell(row, col, grid) {
         }
 
          const availColors = [
-            "midnightblue",
-            "mediumvioletred",
-            "indianred",
-            "gold",
-            "seagreen",
-            "darkcyan"
+            "paleturquoise",
+            "plum",
+            "lightpink",
+            "khaki",
+            "palegreen",
+            "rosybrown"
         ];
 
         if(this.userVisited){
+            // for (let i = 0; i < this.walls.length; i++) {
+            //     this.walls[i].renderDiscovered(i, startRow, startCol);
+            // }
+
             let randomColor = availColors[Math.floor(Math.random() * 6)];
             noStroke();
             fill(randomColor);
-            rect(startRow + 1, startCol + 1, 38, 38);
+            quad(
+                random(startRow+1, startRow+37), random(startCol+1, startCol+37),
+                random(startRow + 1, startRow + 37), random(startCol + 1, startCol + 37),
+                random(startRow + 1, startRow + 37), random(startCol + 1, startCol + 37),
+                random(startRow + 1, startRow + 37), random(startCol + 1, startCol + 37)
+            );
+
+
         }
-
-
     }
 
-    this.renderUser = function(color, userGridPos) {
-        // let userGridPos = userGridPos;
+    this.renderUser = function(color) {
         const startRow = this.row * 40;
         const startCol = this.col * 40;
 
@@ -90,35 +98,9 @@ function Cell(row, col, grid) {
             }
         }
 
-        // const gradientCombos = [
-        //     ["midnightblue", "mediumvioletred"],
-        //     ["mediumvioletred", "indianred"],
-        //     ["indianred", "gold"],
-        //     ["gold", "seagreen"],
-        //     ["seagreen", "darkcyan"],
-        //     ["darkcyan", "midnightblue"]
-        // ];
-
-        // let availColors = [];
-
-        // while(userGridPos !== [19, 19]){
-        //     let randomCombo = gradientCombos[Math.floor(Math.random() * 6)]
-
-        //     let color1 = randomCombo[0];
-        //     let color2 = randomCombo[1];
-        //     // let inBetween1 = lerpColor(color1, color2);
-        //     // let inBetween2 = lerpColor(color1, color2);
-
-        //     availColors = [color1, color2];
-        // }
-
-        // let gradient = availColors[Math.floor(Math.random() * 2)];
-
         noStroke();
         fill("white");
         rect(startRow + 1, startCol + 1, 38, 38);
-        // quad(random(startRow+1, startRow+37), random(startCol+1, startCol+37));
-        // fill("red");
         ellipseMode(CENTER);
         fill(color);
         ellipse(startRow + 20, startCol + 20, 15, 15);
@@ -180,3 +162,5 @@ function Cell(row, col, grid) {
 
 module.exports = Cell;
 
+
+//credit: https://p5js.org/examples/color-lerp-color.html

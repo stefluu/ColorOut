@@ -16,7 +16,7 @@ function Maze(current, grid, game) {
 
     let nextCell = this.current.getNeighbor();
 
-    removeWalls = function(current, next, grid) {
+    removeWalls = function(current, next) {
       const changeX = current.row - next.row;
       const changeY = current.col - next.col;
 
@@ -25,10 +25,12 @@ function Maze(current, grid, game) {
         case 1:
           current.walls[0].present = false;
           next.walls[2].present = false;
+        
           break;
         case -1:
           current.walls[2].present = false;
           next.walls[0].present = false;
+        
           break;
       }
 
@@ -36,6 +38,7 @@ function Maze(current, grid, game) {
         case 1:
           current.walls[3].present = false;
           next.walls[1].present = false;
+        
           break;
         case -1:
           current.walls[1].present = false;

@@ -33,3 +33,9 @@ h1{
     font-family: 'Buda', cursive;
 
 }
+
+.congrats{
+    font-family: 'Buda', cursive;
+    font-size: 20px;
+    text-shadow: 2px 2px orangered;
+}
