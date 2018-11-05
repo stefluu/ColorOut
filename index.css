@@ -1,0 +1,16 @@
+body{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    margin-top: 3%;
+    background: black;
+}
+
+h1{
+    background: transparent;
+    font-size: 60px;
+    color: whitesmoke;
+    opacity: 0.5;
+    font-family: 'Kumar One Outline', cursive;
+    /* padding-right: 30px; */
+}

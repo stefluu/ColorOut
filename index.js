@@ -22,9 +22,16 @@ let maze;
 let mapComplete = false;
 
 // const user = new User();
+let title;
+let canvas;
 
 function setup() {
-    createCanvas(800, 800);
+    title = createElement("h1", "ColorOut");
+    title.position(1000, 20);
+
+    canvas = createCanvas(800, 800);
+    canvas.position(100, 90);
+
     //   cols = 10;
     //   rows = 10;
 
@@ -44,9 +51,11 @@ function setup() {
 
     //   console.log("current")
     //   console.log(current)
-    game.userRender(0, 0);
+    // game.renderUser(this.user.color);
 
     frameRate(100);
+
+ 
 
 }
 
@@ -54,12 +63,23 @@ function setup() {
 
 function draw() {
     // if(!mapComplete){
+    // game.userRender();
+
     maze.draw();
     // mapComplete = maze.mapComplete();
     // }
-    console.log("finish maze")
+    // console.log("finish maze")
+    // play(game)
+
+    
     game.userMove();
-    game.userRender();
+
+    if(game.end){
+        console.log("congrats")
+    }
+
+    // game.userRender();
+
     // game.userRender(0, 0);
 
     // const keypress = event.keyCode;
@@ -211,6 +231,10 @@ function draw() {
 
 }
 
+function play(game){
+    game.userRender();
+    // redraw();
+}
 
 // function Cell(row, col) {
 //     this.row = row;

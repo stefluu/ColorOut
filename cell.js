@@ -19,6 +19,21 @@ function Cell(row, col, grid) {
         rect(startRow, startCol, 40, 40)
     }
 
+    this.makeWallsFalse = function(){
+        for (let i = 0; i < this.walls.length; i++) {
+            this.walls[i] = false;
+        }
+        this.render();
+    }
+
+    // this.makeBlack = function(){
+    //     const startRow = this.row * 40;
+    //     const startCol = this.col * 40;
+    //     noStroke();
+    //     fill("black");
+    //     rect(startRow, startCol, 40, 40)
+    // }
+
     this.render = function () {
         const startRow = this.row * 40;
         const startCol = this.col * 40;

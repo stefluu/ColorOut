@@ -4,7 +4,10 @@ function Game(grid) {
     this.end = [19, 19];
     this.grid = grid;
     this.user = new User(this.grid);
+    this.renderCell = [0, 0];
+    // this.lastInput = new Date();
     // this.userPos = [0, 0];
+    this.startTime = new Date();
 
 
     this.userRender = function () {
@@ -15,58 +18,81 @@ function Game(grid) {
     //     this.userMove();
     // }
 
-    this.end = function (userPos) {
-        this.user.pos === this.end
+    this.end = function () {
+        this.renderCell === [19, 19]
     }
-
+    
     this.userMove = function () {
+        
+        this.user.render(0,0);
 
+        // console.log(this.renderCell)
+        
         let userPos = this.user.pos;
         let x = userPos[0];
         let y = userPos[1];
         let gridPos = this.user.gridPos;
         let prevGridPosCell = this.grid[gridPos[0]][gridPos[1]];
-        // const keypress = event.keyCode;
-        // console.log(event);
-        if (keyIsDown(UP_ARROW)) {
-            // console.log(this.user.pos)
-            this.user.updatePos(["y", -40]);
-            this.user.updateGridPos(["y", -1], userPos);
-            let prevGridPosCell = this.grid[gridPos[0]+1][gridPos[1]];
-            if(!prevGridPosCell.walls[0]) {
-                console.log("hi")
-                this.user.render(this.user.pos[2], this.user.pos[1]);
+        let renderCellBox = this.grid[this.renderCell[0]][this.renderCell[1]];
+        // renderCellBox.highlight();
+        let endTime = new Date();
+        console.log("prevcell")
+        console.log(prevGridPosCell)
+        console.log(key)
+
+        if (keyIsPressed && key === 'ArrowUp' && endTime - this.startTime > 100) {
+            this.startTime = endTime;
+            if (prevGridPosCell.walls[0].color === "white") {
+              // if (renderCellBox.walls[2].color === "white") {
+              this.user.updateGridPos(["y", -1], userPos);
+              this.renderCell = this.user.gridPos;
+              // let renderCellBox = this.grid[this.renderCell[0]][this.renderCell[1]];
+
+              // if(renderCellBox.walls[0] === false){
+              // console.log("rendercell");
+              // console.log(this.renderCell);
+              // debugger
+              this.user.render(this.renderCell[0], this.renderCell[1]);
             }
         }
 
-        if (keyIsDown(DOWN_ARROW)) {
-            this.user.updatePos(["y", 40]);
+        if (keyIsPressed && key === "ArrowDown" && endTime - this.startTime > 100) {
+            this.startTime = endTime;
+          if (prevGridPosCell.walls[1].color === "white") {
             this.user.updateGridPos(["y", 1], userPos);
-            console.log(prevGridPosCell.walls[2]);
-            console.log(!(prevGridPosCell.walls[2]));
-
-            if (!(prevGridPosCell.walls[2])) {
-                console.log("derp")
-                this.user.render(this.user.pos[0], this.user.pos[1]);
-            }        
+            this.renderCell = this.user.gridPos;
+            // console.log("rendercell");
+            // console.log(this.renderCell);
+            // debugger;
+            this.user.render(this.renderCell[0], this.renderCell[1]);
+          }
         }
 
-        if (keyIsDown(LEFT_ARROW)) {
-            this.user.updatePos(["x", -40]);
+        if (keyIsPressed && key === "ArrowLeft" && endTime - this.startTime > 100) {
+            this.startTime = endTime;
+          if (prevGridPosCell.walls[0].color === "white") {
             this.user.updateGridPos(["x", -1], userPos);
-            if (!prevGridPosCell.walls[3]) {
-                this.user.render(this.user.pos[3], this.user.pos[1]);
-            }        
+            this.renderCell = this.user.gridPos;
+            // console.log("rendercell");
+            // console.log(this.renderCell);
+            // debugger;
+            this.user.render(this.renderCell[0], this.renderCell[1]);
+          }
         }
 
-        if (keyIsDown(RIGHT_ARROW)) {
-            this.user.updatePos(["x", 40]);
+        if (keyIsPressed && key === "ArrowRight" && endTime - this.startTime > 100) {
+            this.startTime = endTime;
+          if (prevGridPosCell.walls[2].color === "white") {
             this.user.updateGridPos(["x", 1], userPos);
-            if (!prevGridPosCell.walls[1]) {
-                this.user.render(this.user.pos[1], this.user.pos[1]);
-            }        
+            this.renderCell = this.user.gridPos;
+            // console.log("rendercell");
+            // console.log(this.renderCell);
+            // debugger;
+            this.user.render(this.renderCell[0], this.renderCell[1]);
+          }
         }
 
+        
         // this.user.update();
         // this.user.display();
         // const colors = ["lightcoral", "orange", "Chartreuse", "darkcyan", "darkorchid"];

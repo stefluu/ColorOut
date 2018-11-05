@@ -47,32 +47,32 @@ function User(grid) {
         nextCell.renderUser(currentColor);
     }
 
-    this.draw = function () {
-        let x = this.pos[0];
-        let y = this.pos[1];
-        // const keypress = event.keyCode;
-        // console.log(event);
-        if (keyIsDown(LEFT_ARROW)) {
-            // console.log(this.user.pos)
-            this.updatePos(["y", -40]);
-            this.render(this.pos[0], this.pos[1]);
-        }
+    // this.draw = function () {
+    //     let x = this.pos[0];
+    //     let y = this.pos[1];
+    //     // const keypress = event.keyCode;
+    //     // console.log(event);
+    //     if (keyIsDown(LEFT_ARROW)) {
+    //         // console.log(this.user.pos)
+    //         this.updatePos(["y", -40]);
+    //         this.render(this.pos[0], this.pos[1]);
+    //     }
 
-        if (keyIsDown(RIGHT_ARROW)) {
-            this.updatePos(["y", 40]);
-            this.render(this.pos[0], this.pos[1]);
-        }
+    //     if (keyIsDown(RIGHT_ARROW)) {
+    //         this.updatePos(["y", 40]);
+    //         this.render(this.pos[0], this.pos[1]);
+    //     }
 
-        if (keyIsDown(UP_ARROW)) {
-            this.updatePos(["x", -40]);
-            this.render(this.pos[0], this.pos[1]);
-        }
+    //     if (keyIsDown(UP_ARROW)) {
+    //         this.updatePos(["x", -40]);
+    //         this.render(this.pos[0], this.pos[1]);
+    //     }
 
-        if (keyIsDown(DOWN_ARROW)) {
-            this.updatePos(["x", 40]);
-            this.render(this.pos[0], this.pos[1]);
-        }
-    }
+    //     if (keyIsDown(DOWN_ARROW)) {
+    //         this.updatePos(["x", 40]);
+    //         this.render(this.pos[0], this.pos[1]);
+    //     }
+    // }
 }
 
 module.exports = User;

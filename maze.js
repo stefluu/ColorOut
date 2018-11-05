@@ -2,8 +2,9 @@ function Maze(current, grid, game) {
   this.current = current;
   this.grid = grid;
   this.stack = [];
-  this.map = false;
+  // this.complete = false;
   this.game = game;
+
 
   this.draw = function() {
     background(51);
@@ -77,6 +78,38 @@ function Maze(current, grid, game) {
       // }
     };
 
+    // openWalls = function(cell){
+    //   console.log("open")
+    //   // cell.walls.forEach((wall) => {
+    //   //   return wall.present = true;
+    //   // })
+    //   // for(let i = 0; i < cell.walls.length; i++){
+    //   //   cell.walls[i] = true;
+    //   // }
+    //   debugger
+    //   cell.makeWallsFalse();
+    // }
+
+    // addWalls = function(cell){
+    //   // console.log("open")
+    //   // cell.walls.forEach((wall) => {
+    //   //   return wall.present = true;
+    //   // })
+    //   // for(let i = 0; i < cell.walls.length; i++){
+    //   //   cell.walls[i] = true;
+    //   // }
+    //   cell.makeBlack();
+    //   // cell.makeWallsFalse();
+    // }
+
+    // rerenderAtEnd = function(){
+    //   for (let i = 0; i < grid.length; i++) {
+    //     for (let j = 0; j < grid[i].length; j++) {
+    //       grid[i][j].render();
+    //     }
+    //   }
+    // }
+
     if (nextCell) {
       nextCell.visited = true;
       removeWalls(this.current, nextCell, grid);
@@ -88,18 +121,25 @@ function Maze(current, grid, game) {
       while (potentialRestart && !potentialRestart.getNeighbor()) {
         if (!this.stack.length) {
           potentialRestart.visited = true;
-          // game.userMove();
+          // potentialRestart.render();
+          // openWalls(potentialRestart);
+          // potentialRestartNeighbor = grid[potentialRestart.row + 1][potentialRestart.col]
+          // removeWalls(potentialRestart, potentialRestartNeighbor, grid);
           this.map = true;
           break;
-          console.log("finish");
-          if (map) {
-            console.log("hi");
-            game.userMove();
-          }
+
           // noLoop();
           // break;
         } else {
           potentialRestart = this.stack.pop();
+          // potentialRestart.render();
+
+          // if(potentialRestart.row < 18){
+          //   potentialRestartNeighbor = grid[potentialRestart.row + 1][potentialRestart.col]
+          // } else {
+          //   potentialRestartNeighbor = grid[potentialRestart.row][potentialRestart.col]
+          // }
+          // addWalls(potentialRestart);
         }
       }
       this.current = potentialRestart;
@@ -113,7 +153,6 @@ function Maze(current, grid, game) {
         grid[i][j].render();
       }
     }
-
     //     game.start();
     // } else if (map && !gameEnd) {
     //     game.start();
@@ -139,11 +178,15 @@ function Maze(current, grid, game) {
     // while (!game.end()){
     //     game.userMove()
     // }
+
   };
 
   // this.mapComplete = function(){
   //     return this.map;
   // }
+
+  
+
 }
 
 module.exports = Maze;
