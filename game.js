@@ -33,7 +33,7 @@ function Game(grid) {
         let y = userPos[1];
         let gridPos = this.user.gridPos;
         let prevGridPosCell = this.grid[gridPos[0]][gridPos[1]];
-        let renderCellBox = this.grid[this.renderCell[0]][this.renderCell[1]];
+        // let renderCellBox = this.grid[this.renderCell[0]][this.renderCell[1]];
         // renderCellBox.highlight();
         let endTime = new Date();
         console.log("prevcell")
