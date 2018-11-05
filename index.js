@@ -4,6 +4,7 @@ const Cell = require('./cell');
 // const User = require('./user');
 const Game = require('./game');
 const Maze = require('./maze');
+// const Directions = require('./directions');
 
 // window.MovingObject = MovingObject;
 
@@ -24,13 +25,32 @@ let mapComplete = false;
 // const user = new User();
 let title;
 let canvas;
+let directionsDiv;
+
 
 function setup() {
     title = createElement("h1", "ColorOut");
-    title.position(1000, 20);
+    title.position(970, 20);
 
     canvas = createCanvas(800, 800);
     canvas.position(100, 90);
+
+    directionsDiv = createDiv();
+    directionsDiv.addClass("directions");
+    directionsDiv.position(970, 170);
+
+    let randomGlowColors = [
+        "0px 0px 50px 10px white, 0px 0px 50px 10px MidnightBlue",
+        "0px 0px 50px 10px white, 0px 0px 50px 10px MediumVioletRed	",
+        "0px 0px 50px 10px white, 0px 0px 50px 10px IndianRed",
+        "0px 0px 50px 10px white, 0px 0px 50px 10px DarkCyan",
+        "0px 0px 50px 10px white, 0px 0px 50px 10px SeaGreen"
+    ]
+
+    let chosenGlow = randomGlowColors[Math.floor(Math.random() * randomGlowColors.length)]
+
+    let directions = document.querySelector(".directions");
+    directions.style.boxShadow = chosenGlow;
 
     //   cols = 10;
     //   rows = 10;
